@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head >
+  <meta charset="UTF-8">
+  <title>Inscripció d'estudiants</title>
+</head>
+<body th:align="center">
+<h2 style="font-family:sans-serif; color:burlywood;">Inscripció d'estudiants</h2>
+
+<form action="/api/estudiants/alta" method="post">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="estudiantNom" required><br>
+
+  <label for="apellido">Apellido:</label>
+  <input type="text" id="apellido" name="estudiantCognom" required><br>
+
+  <label for="curso">Curso:</label>
+  <select id="curso" name="estudiantCursId" required>
+    <option value="">Seleccione un curso</option>
+    <option th:each="curs : ${cursos}" th:value="${curs.cursId}" th:text="${curs.titolCurs}"></option>
+  </select><br>
+
+  <button type="submit">Inscribir</button>
+</form>
+</body>
+</html>
